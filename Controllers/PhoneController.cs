@@ -9,7 +9,7 @@ namespace Phonebook.Controllers
     
     public class PhoneController : Controller
     {
-        public string successMessage;
+       /* public string successMessage;*/
 
         private readonly PhoneDbContext contacts;
 
@@ -28,8 +28,6 @@ namespace Phonebook.Controllers
         {
             return View();
         }
-
-
 
         public async Task<IActionResult> AddContact(AddPhoneViewModel newuser)
         {
@@ -86,8 +84,6 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> EditPhone(EditPhoneViewModel newphone)
         {
-            Console.WriteLine(newphone.Id);
-            var ide = Request.Form["id"];
             var data = await contacts.Contact.FindAsync(newphone.Id);
 
         /*    Console.WriteLine(ide);*/
