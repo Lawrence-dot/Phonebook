@@ -1,0 +1,27 @@
+﻿@model Phonebook.Models.EditPhoneViewModel
+
+<div>
+    <form method="post" asp-controller="Phone" asp-action="EditPhone">
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">First Name</label>
+            <input type="text" class="form-control" asp-for="First_name">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Last Name</label>
+            <input type="text" asp-for="Last_name" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Primary Phone Number</label>
+            <input type="tel" asp-for="Primary_phone" class="form-control">
+        </div>
+        
+        <div class="mb-3">
+            <label class="form-label">Secondary Phone Number</label>
+            <input type="tel" asp-for="Secondary_phone" class="form-control">
+        </div>
+
+        <button class="w-100 btn btn-info" type="submit"> Save Changes</button>
+        <input type="hidden" name="Id" value=@Model.Id />
+    </form>
+</div>
+

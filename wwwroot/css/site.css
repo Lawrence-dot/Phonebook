@@ -1,0 +1,62 @@
+html {
+  font-size: 14px;
+}
+
+.searchbar {
+    max-width: 245px;
+}
+
+.card-title {
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.searchico {
+    width: 20px;
+    height: 20px;
+}
+
+.card-link img {
+    width: 21px;
+    height: 24px;
+}
+
+.nav-item {
+    margin-left: auto!important;
+}
+
+form {
+    max-width: 610px;
+    margin: 0 auto;
+}
+
+
+
+@media (min-width: 768px) {
+    html {
+    font-size: 16px;
+  }
+}
+
+@media (min-width: 992px) {
+    .col-lg-4 {
+        width: 31%!important;
+    }
+}
+
+@media (max-width: 575px) {
+    .nav-item {
+        margin: 0 auto!important;
+    }
+}
+
+
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}

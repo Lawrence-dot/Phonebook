@@ -1,0 +1,23 @@
+﻿@model Phonebook.Models.AddPhoneViewModel
+
+
+
+<form method="post" asp-controller="Phone" asp-action="AddContact">
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">First Name</label>
+        <input type="text" class="form-control" asp-for="First_name" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Last Name</label>
+        <input type="text" asp-for="Last_name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Primary Phone Number</label>
+        <input type="tel" asp-for="Primary_phone" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Secondary Phone Number</label>
+        <input type="tel" asp-for="Secondary_phone" class="form-control" id="exampleInputPassword1">
+    </div>
+    <button type="submit" class="btn btn-info w-100">Save Contact</button>
+</form>
