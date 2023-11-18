@@ -1,27 +1,30 @@
 ﻿@model Phonebook.Models.EditPhoneViewModel
 
 <div>
-    <form method="post" asp-controller="Phone" asp-action="EditPhone">
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">First Name</label>
-            <input type="text" class="form-control" asp-for="First_name">
+    <form method="post" asp-controller="Phone" asp-action="EditPhone" onsubmit="return validate()">
+        <div class="col-12 d-flex flex-column">
+            <label for="fname" class="form-label">First Name</label>
+            <input type="text"  onfocusin="clermsg(event)" asp-for="First_name" class="form-control" id="fname" aria-describedby="inputGroupPrepend">
+            <small class="hidden warnings"> Please Fill Input a valid name </small>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Last Name</label>
-            <input type="text" asp-for="Last_name" class="form-control">
+        <div class="mb-3 d-flex flex-column">
+            <label for="lname" class="form-label">Last Name</label>
+            <input type="text"  onfocusin="clermsg(event)" asp-for="Last_name" class="form-control" id="lname" aria-describedby="emailHelp">
+            <small class="hidden warnings"> Please Fill Input a valid name </small>
         </div>
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Primary Phone Number</label>
-            <input type="tel" asp-for="Primary_phone" class="form-control">
+        <div class="mb-3 d-flex flex-column">
+            <label for="pphone" class="form-label">Primary Phone Number</label>
+            <input type="tel"  onfocusin="clermsg(event)" asp-for="Primary_phone" class="form-control" id="pphone" aria-describedby="emailHelp">
+            <small class="hidden warnings"> Please Fill Input a valid Nigeria Phone Number </small>
         </div>
-        
-        <div class="mb-3">
-            <label class="form-label">Secondary Phone Number</label>
-            <input type="tel" asp-for="Secondary_phone" class="form-control">
+        <div class="mb-3 d-flex flex-column">
+            <label for="sphone" class="form-label">Secondary Phone Number</label>
+            <input type="tel"  onfocusin="clermsg(event)" asp-for="Secondary_phone" class="form-control" id="sphone">
+            <small class="hidden warnings"> Please Fill Input a valid Nigeria Phone Number </small>
         </div>
 
         <button class="w-100 btn btn-info" type="submit"> Save Changes</button>
         <input type="hidden" name="Id" value=@Model.Id />
     </form>
-</div>
+</div
 

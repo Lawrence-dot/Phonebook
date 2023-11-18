@@ -2,14 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
 using Phonebook.Models;
-using System.Security.Cryptography;
 
 namespace Phonebook.Controllers
 {
     
     public class PhoneController : Controller
     {
-       /* public string successMessage;*/
+        public string errorMessage = "";
 
         private readonly PhoneDbContext contacts;
 
@@ -31,17 +30,17 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> AddContact(AddPhoneViewModel newuser)
         {
-            var data = new Contact()
-            {
-                Id = new Guid(),
-                First_name = newuser.First_name,
-                Last_name = newuser.Last_name,
-                Primary_phone = newuser.Primary_phone,
-                Secondary_phone = newuser.Secondary_phone
-            };
-            await contacts.AddAsync(data);
-            await contacts.SaveChangesAsync();
-            return RedirectToAction("Index", "Home");
+                var data = new Contact()
+                {
+                    Id = new Guid(),
+                    First_name = newuser.First_name,
+                    Last_name = newuser.Last_name,
+                    Primary_phone = newuser.Primary_phone,
+                    Secondary_phone = newuser.Secondary_phone
+                };
+                await contacts.AddAsync(data);
+                await contacts.SaveChangesAsync();
+                return RedirectToAction("Index", "Home");
         }
 
         public async Task<IActionResult> ViewPhone(Guid id)
@@ -85,8 +84,6 @@ namespace Phonebook.Controllers
         public async Task<IActionResult> EditPhone(EditPhoneViewModel newphone)
         {
             var data = await contacts.Contact.FindAsync(newphone.Id);
-
-        /*    Console.WriteLine(ide);*/
 
             if (data != null)
             {

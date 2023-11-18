@@ -8,15 +8,9 @@ namespace Phonebook.Controllers
 {
     public class HomeController : Controller
     {
+        
+
         private readonly PhoneDbContext contacts;
-
-        /*        private readonly ILogger<HomeController> _logger;
-*/
-
-        /*		public HomeController(ILogger<HomeController> logger)
-                {
-                    _logger = logger;
-                }*/
 
         public HomeController(PhoneDbContext contacts)
         {

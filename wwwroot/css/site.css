@@ -5,6 +5,14 @@ html {
 .searchbar {
     max-width: 245px;
 }
+small {
+    color:red;
+    margin-bottom: 5px;
+}
+
+.hidden {
+    display: none;
+}
 
 .card-title {
     font-weight: 700;
