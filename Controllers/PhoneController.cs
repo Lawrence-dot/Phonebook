@@ -5,7 +5,6 @@ using Phonebook.Models;
 
 namespace Phonebook.Controllers
 {
-    
     public class PhoneController : Controller
     {
         public string errorMessage = "";
