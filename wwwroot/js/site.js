@@ -5,7 +5,7 @@
     let id = (id) => document.getElementById(id);
     const validatestring = HTMLInputElement => {
         let element = HTMLInputElement.value;
-        if (element.length > 1 && element != null) {
+        if (element.length > 0 && element != null) {
             return true;
         } else {
             HTMLInputElement.nextElementSibling.classList.remove("hidden");
@@ -15,8 +15,10 @@
 
     const validatePhone = HTMLInputElement => {
         let element = HTMLInputElement.value;
-        if (element.length == 11 && element != null) {
-            if (element.startsWith("090") || element.startsWith("080") || element.startsWith("070")) {
+        if (element != null) {
+            if (element.startsWith("0") && element.length == 11) {
+                return true;
+            } else if (element.startsWith("+") && element.length == 14) {
                 return true;
             }
             else {

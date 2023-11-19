@@ -27,8 +27,30 @@ namespace Phonebook.Controllers
             return View();
         }
 
+        public bool verifystring (string value) {
+            if (value.Length > 0 && value != null)
+            {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public bool verifyphone (string value) {
+            if(value.StartsWith("0") && value.Length == 11) {
+                return true;
+            } else if(value.StartsWith("+234") && value.Length == 14) {
+                return true;
+            } 
+             else {
+                return false;
+            }
+        }
+
         public async Task<IActionResult> AddContact(AddPhoneViewModel newuser)
         {
+            if (verifystring(newuser.First_name) && verifystring(newuser.Last_name) && verifyphone(newuser.Primary_phone) && verifyphone(newuser.Secondary_phone))
+            {
                 var data = new Contact()
                 {
                     Id = new Guid(),
@@ -40,12 +62,22 @@ namespace Phonebook.Controllers
                 await contacts.AddAsync(data);
                 await contacts.SaveChangesAsync();
                 return RedirectToAction("Index", "Home");
+            } else {
+                return new EmptyResult();
+            }
         }
 
         public async Task<IActionResult> ViewPhone(Guid id)
         {
             var data = await contacts.Contact.FindAsync(id);
-            return View(data);
+            if (data != null)
+            {
+                return View(data);
+            } else
+            {
+                return new EmptyResult();
+            }
+            
         }
 
         public async Task<IActionResult> Delete(Guid id)
@@ -57,6 +89,7 @@ namespace Phonebook.Controllers
                 await contacts.SaveChangesAsync();
             }
             return RedirectToAction("Index", "Home");
+            
         }
 
         public async Task<IActionResult> Edit(Guid id)
@@ -75,13 +108,15 @@ namespace Phonebook.Controllers
                 return View(contact);
             } else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
             
         }
 
         public async Task<IActionResult> EditPhone(EditPhoneViewModel newphone)
         {
+            if (verifystring(newphone.First_name) && verifystring(newphone.Last_name) && verifyphone(newphone.Primary_phone) && verifyphone(newphone.Secondary_phone))
+            {
             var data = await contacts.Contact.FindAsync(newphone.Id);
 
             if (data != null)
@@ -90,11 +125,13 @@ namespace Phonebook.Controllers
                 data.Secondary_phone = newphone.Secondary_phone;
                 data.Last_name = newphone.Last_name;
                 data.First_name = newphone.First_name;
-                Console.WriteLine(data.First_name);
                 await contacts.SaveChangesAsync();
             }
 
             return RedirectToAction("Index", "Home");
+            } else {
+                return new EmptyResult();
+            }
         }
     }
 }
