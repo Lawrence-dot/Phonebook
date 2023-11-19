@@ -1,6 +1,8 @@
 html {
   font-size: 14px;
-}
+}body {
+     min-width: 290px;
+ }
 
 .searchbar {
     max-width: 245px;
