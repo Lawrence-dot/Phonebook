@@ -1,4 +1,4 @@
-﻿@model List<Phonebook.Models.Contact>;
+﻿@model List<Phonebook.Models.Student>;
 
 @{
     ViewData["Title"] = "Home Page";
@@ -20,11 +20,11 @@
             {
                 <div class="card my-2 col-sm-12 col-md- col-lg-4">
                     <div class="card-body">
-                        <h5 class="card-title">@contact.Primary_phone</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">@contact.First_name</h6>
-                        <p class="card-text"> @contact.Last_name</p>
-                        <a href="Phone/ViewPhone/@contact.Id" class="card-link btn btn-info">View</a>
-                        <a href="Phone/Edit/@contact.Id" class="card-link btn btn-primary"><img src="/assets/Edit.png" alt="Edit" /></a>
+                        <h5 class="card-title">@contact.First_name</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">@contact.Admission_number</h6>
+                        <p class="card-text"> @contact.Course_of_study</p>
+                        <a href="Student/ViewStudent/@contact.Id" class="card-link btn btn-info">View</a>
+                        <a href="Student/Edit/@contact.Id" class="card-link btn btn-primary"><img src="/assets/Edit.png" alt="Edit" /></a>
                         <button type="button" class="btn card-link btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
                             <img src="/assets/Delete.svg" alt="Delete" />
                         </button>
@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                    <a href="Phone/Delete/@contact.Id" class="card-link btn btn-danger">Yes</a>
+                                    <a href="Student/Delete/@contact.Id" class="card-link btn btn-danger">Yes</a>
                                 </div>
                             </div>
                         </div>
@@ -49,8 +49,6 @@
 
                 </div>
             }
-            <!-- Modal -->
-
         </div>
     </div>
 

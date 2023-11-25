@@ -33,10 +33,16 @@
 
     validatestring(id("fname"));
     validatestring(id("lname"));
-    validatePhone(id("pphone"));
-    validatestring(id("sphone"));
+    validatePhone(id("phone"));
+    validatestring(id("Home_address"));
+    validatestring(id("Department"));
+    validatestring(id("Faculty"));
+    validatestring(id("Level"));
+    validatestring(id("Gender"));
+    validatestring(id("Email"));
+    validatestring(id("Course_of_study"));
 
-    if (validatestring(id("fname")) && validatestring(id("lname")) && validatePhone(id("pphone")) && validatestring(id("sphone"))) {
+    if (validatestring(id("fname")) && validatestring(id("lname")) && validatePhone(id("phone")) && validatestring(id("Admission_number")) && validatestring(id("Home_address")) && validatestring(id("Department")) && validatestring(id("Faculty")) && validatestring(id("Level")) && validatestring(id("Gender")) && validatestring(id("Email")) && validatestring(id("Course_of_study"))) {
         return true;
     } else {
         return false;

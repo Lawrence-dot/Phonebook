@@ -8,19 +8,17 @@ namespace Phonebook.Controllers
 {
     public class HomeController : Controller
     {
-        
+        private readonly StudentDbContext student;
 
-        private readonly PhoneDbContext contacts;
-
-        public HomeController(PhoneDbContext contacts)
+        public HomeController(StudentDbContext student)
         {
-            this.contacts = contacts;
+            this.student = student;
         }
 
         public async Task<IActionResult> Index()
         {
-            var users = await contacts.Contact.ToListAsync();
-            return View(users);
+            var students = await student.Students.ToListAsync();
+            return View(students);
         }
 
         public IActionResult Privacy()

@@ -1,0 +1,35 @@
+﻿@model List<Phonebook.Models.Course>;
+
+@{
+    ViewData["Title"] = "Courses";
+}
+
+<div>
+    <div>
+        <div class="input-group mb-3 mt-2  justify-content-center">
+            <input type="text" class="form-control searchbar" placeholder="Search Courses" aria-label="Recipient's username" aria-describedby="button-addon2">
+            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
+                <img class="searcico" src="/assets/search.svg" alt="o" />
+            </button>
+        </div>
+    </div>
+
+    <a class="btn btn-primary ml-auto mb-4" asp-action="AddCourses" asp-controller="Course"> Add A New Course </a>
+
+    <div class="container">
+        <div class="row gap-1 d-flex">
+            @foreach (var course in Model)
+            {
+                <div class="card my-2 col-sm-12 col-md-6 col-lg-4">
+                    <div class="card-body">
+                        <h5 class="card-title">@course.Title</h5>
+                        <h6 class="card-subtitle mb-2 text-body-secondary">@course.Code</h6>
+                        <p class="card-text"> @course.Unit Units</p>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+
+</div>

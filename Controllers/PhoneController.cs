@@ -7,7 +7,7 @@ namespace Phonebook.Controllers
 {
     public class PhoneController : Controller
     {
-        public string errorMessage = "";
+     /*   public string errorMessage = "";
 
         private readonly PhoneDbContext contacts;
 
@@ -132,6 +132,6 @@ namespace Phonebook.Controllers
             } else {
                 return new EmptyResult();
             }
-        }
+        }*/
     }
 }

@@ -1,0 +1,2 @@
+﻿INSERT INTO Students(Id,First_name, Middle_name, Last_name,Date_of_birth,Admission_number,Admission_date,Home_address,Department,Faculty,Level,Course_of_study,Gender,Phone_number,Email)
+VALUES(newid(), 'Olamide', 'g', 'Olamide', '22-02-2000', 'ASS', '26-10-2001', 'Ikeja, Lagos', 'Business Admin', 'Art', 200, 'ART', 'Male', '0902859328145', 'EFEFE@gmail.com' )
