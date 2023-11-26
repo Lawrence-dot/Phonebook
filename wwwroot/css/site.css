@@ -40,6 +40,10 @@ form {
     margin: 0 auto;
 }
 
+.form > div {
+    margin: 15px 0;
+}
+
 
 
 @media (min-width: 768px) {

@@ -1,20 +1,20 @@
 ﻿@model Phonebook.Models.AddCourseViewModel
 
-<form method="post" class="" asp-controller="Course" asp-action="AddNewCourses">
+<form method="post" class="" asp-controller="Course" asp-action="AddNewCourses" onsubmit="return validatecourse()">
     <div class="col-12 d-flex flex-column">
         <label for="fname" class="form-label">Title </label>
-        <input type="text" onfocusin="clermsg(event)" asp-for="Title" class="form-control" id="fname" aria-describedby="inputGroupPrepend">
-        <small class="hidden warnings"> Please Fill Input a valid name </small>
+        <input type="text" onfocusin="clermsg(event)" asp-for="Title" class="form-control" id="Title" aria-describedby="inputGroupPrepend">
+        <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="lname" class="form-label">Course</label>
-        <input type="text" onfocusin="clermsg(event)" asp-for="Code" class="form-control" id="lname" aria-describedby="emailHelp">
-        <small class="hidden warnings"> Please Fill Input a valid name </small>
+        <input type="text" onfocusin="clermsg(event)" asp-for="Code" class="form-control" id="Code" aria-describedby="emailHelp">
+        <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="pphone" class="form-label">Unit</label>
-        <input type="tel" onfocusin="clermsg(event)" asp-for="Unit" class="form-control" id="mname" aria-describedby="emailHelp">
-        <small class="hidden warnings"> Please Fill Input a valid name </small>
+        <input type="tel" onfocusin="clermsg(event)" asp-for="Unit" class="form-control" id="Unit" aria-describedby="emailHelp">
+        <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
 
     <button type="submit" class="btn btn-info w-100"> Save Student </button>

@@ -1,89 +1,97 @@
 ﻿@model Phonebook.Models.EditStudentViewModel
 
 <div>
-    <form method="post" class="" asp-controller="Student" asp-action="EditStudent" onsubmit="return validate()">
-        <div class="col-12 d-flex flex-column">
-            <label for="fname" class="form-label">First Name</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="First_name" class="form-control" id="fname" aria-describedby="inputGroupPrepend">
-            <small class="hidden warnings"> Please Fill Input a valid name </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="lname" class="form-label">Last Name</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Last_name" class="form-control" id="lname" aria-describedby="emailHelp">
-            <small class="hidden warnings"> Please Fill Input a valid name </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="pphone" class="form-label">Middle Name</label>
-            <input type="tel" onfocusin="clermsg(event)" asp-for="Middle_name" class="form-control" id="mname" aria-describedby="emailHelp">
-            <small class="hidden warnings"> Please Fill Input a valid name </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="sphone" class="form-label">Phone Number</label>
-            <input type="tel" onfocusin="clermsg(event)" asp-for="Phone_number" class="form-control" id="phone">
-            <small class="hidden warnings"> Please Fill Input a valid Nigeria Phone Number </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Date_of_birth" class="form-label">Date of Birth</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Date_of_birth" class="form-control">
-            <small class="hidden warnings"> Please Fill Input a valid input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Admission_date" class="form-label">Admission Date</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Admission_date" class="form-control" id="Admission_date">
-            <small class="hidden warnings"> Please Fill Input a valid input</small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Admission_number" class="form-label">Admission Number</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Admission_number" class="form-control" id="Admission_number">
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Home_address" class="form-label">Home Address </label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Home_address" class="form-control" id="Home_address">
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Department" class="form-label">Department </label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Department" class="form-control" id="Department">
-            <small class="hidden warnings"> Please Fill Input a valid Selection</small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Faculty" class="form-label">Faculty</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Faculty" class="form-control" id="Faculty">
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Level" class="form-label">Level</label>
-            <select type="text" onfocusin="clermsg(event)" asp-for="Level" class="form-control" id="Level">
-                <option value="100">100</option>
-                <option value="200">200</option>
-            </select>
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Gender" class="form-label">Gender</label>
-            <select type="text" onfocusin="clermsg(event)" asp-for="Gender" class="form-control" id="Gender">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Email" class="form-label">Email</label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Email" class="form-control" id="Email">
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        <div class="mb-3 d-flex flex-column">
-            <label for="Course_of_study" class="form-label">Course Of Study </label>
-            <input type="text" onfocusin="clermsg(event)" asp-for="Course_of_study" class="form-control" id="Course_of_study">
-            <small class="hidden warnings"> Please Fill Input a valid Input </small>
-        </div>
-        
+    <form method="post" class="form" asp-controller="Student" asp-action="EditStudent" onsubmit="return validate()">
+            <div class="col-12 d-flex flex-column">
+                <label for="fname" class="form-label">First Name</label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="First_name" class="form-control" id="fname" aria-describedby="inputGroupPrepend">
+                <small class="hidden warnings"> Please Fill Input a valid name </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="lname" class="form-label">Last Name</label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="Last_name" class="form-control" id="lname" aria-describedby="emailHelp">
+                <small class="hidden warnings"> Please Fill Input a valid name </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="pphone" class="form-label">Middle Name</label>
+                <input type="tel" onfocusin="clermsg(event)" asp-for="Middle_name" class="form-control" id="mname" aria-describedby="emailHelp">
+                <small class="hidden warnings"> Please Fill Input a valid name </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="sphone" class="form-label">Phone Number</label>
+                <input type="tel" onfocusin="clermsg(event)" asp-for="Phone_number" class="form-control" id="phone">
+                <small class="hidden warnings"> Please Fill Input a valid Nigeria Phone Number </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Date_of_birth" class="form-label">Date of Birth</label>
+                <input type="date" onfocusin="clermsg(event)" asp-for="Date_of_birth" class="form-control" id="Date_of_birth">
+                <small class="hidden warnings"> Please Fill Input a valid Date </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Admission_date" class="form-label">Admission Date</label>
+                <input type="date" onfocusin="clermsg(event)" asp-for="Admission_date" class="form-control" id="Admission_date">
+                <small class="hidden warnings"> Please Fill Input a valid Date </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Admission_number" class="form-label">Admission Number</label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="Admission_number" class="form-control" id="Admission_number">
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Home_address" class="form-label">Home Address </label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="Home_address" class="form-control" id="Home_address">
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Department" class="form-label">Department </label>
+                <select onfocusin="clermsg(event)" asp-for="Department" class="form-control" id="Department">
+                    <option value="CPE">Computer Engineering</option>
+                    <option value="AGR">Agric Engineering</option>
+                    <option value="EEG">Electrical Engineering</option>
+                    <option value="CIVIl">Civil ENgineering</option>
+                </select>
+                <small class="hidden warnings"> Please Fill Input a valid Selection</small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Faculty" class="form-label">Faculty</label>
+                <select onfocusin="clermsg(event)" asp-for="Faculty" class="form-control" id="Faculty">
+                    <option value="ENG">Engineering</option>
+                    <option value="CLS">Clinical Sciences</option>
+                    <option value="ART">Art</option>
+                    <option value="EDU">Education</option>
+                </select>
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Level" class="form-label">Level</label>
+                <select type="text" onfocusin="clermsg(event)" asp-for="Level" class="form-control" id="Level">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                    <option value="500">500</option>
+                </select>
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Gender" class="form-label">Gender</label>
+                <select type="text" onfocusin="clermsg(event)" asp-for="Gender" class="form-control" id="Gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                </select>
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Email" class="form-label">Email</label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="Email" class="form-control" id="Email">
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <div class="mb-3 d-flex flex-column">
+                <label for="Course_of_study" class="form-label">Course Of Study </label>
+                <input type="text" onfocusin="clermsg(event)" asp-for="Course_of_study" class="form-control" id="Email">
+                <small class="hidden warnings"> Please Fill Input a valid Input </small>
+            </div>
+            <input type="hidden" name="id" value=@Model.Id />
 
-        <button type="submit" class="btn btn-info w-100"> Save Student </button>
-
-        <input type="hidden" name="id" value=@Model.Id />
-    </form>
-
-</div>
-
+            <button type="submit" class="btn btn-info w-100"> Save Student </button>
+        </form>

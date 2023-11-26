@@ -26,8 +26,13 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> ViewCourses()
         {
-            var courselist = await courses.Courses.ToListAsync();
-            return View(courselist);
+            var courseview = await courses.Courses.ToListAsync();
+            foreach (var course in courseview)
+            {
+                course.Unit = course.Unit.ToString();
+            }
+
+            return View(courseview);
 
         }
 
@@ -51,7 +56,7 @@ namespace Phonebook.Controllers
             };
             await courses.Courses.AddAsync(data);
             await courses.SaveChangesAsync();
-            return RedirectToAction("Course", "ViewCourses");
+            return RedirectToAction("ViewCourses", "Course" );
 
         }
 
@@ -63,7 +68,7 @@ namespace Phonebook.Controllers
                 courses.Courses.Remove(data);
                 await courses.SaveChangesAsync();
             }
-            return RedirectToAction("Course", "ViewCourses");
+            return RedirectToAction( "ViewCourses", "Course");
         }
 
         public async Task<IActionResult> Edit(Guid id)
