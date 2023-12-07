@@ -24,6 +24,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Course/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Course/ViewCourse.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXFZpZXdDb3Vyc2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -40,6 +44,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Score/Add.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NvcmVcQWRkLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Score/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NvcmVcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Score/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NvcmVcRXJyb3IuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Score/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2NvcmVcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -54,6 +74,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Student/Edit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFZGl0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Student/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Student/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZGVudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Student/ViewStudent.cshtml]

@@ -1,54 +1,39 @@
 ﻿@model List<Phonebook.Models.Student>;
 
 @{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Student Page";
 }
 
 <div>
-    <div>
-        <div class="input-group mb-3 mt-2  justify-content-center">
-            <input type="text" class="form-control searchbar" placeholder="Search Contact" aria-label="Recipient's username" aria-describedby="button-addon2">
-            <button class="btn btn-outline-secondary" type="button" id="button-addon2">
-                <img class="searcico" src="/assets/search.svg" alt="o" />
-            </button>
-        </div>
-    </div>
-
     <div class="container"> 
-        <div class="row gap-1 d-flex">
-            @foreach (var contact in Model)
-            {
-                <div class="card my-2 col-sm-12 col-md- col-lg-4">
-                    <div class="card-body">
-                        <h5 class="card-title">@contact.First_name</h5>
-                        <h6 class="card-subtitle mb-2 text-body-secondary">@contact.Admission_number</h6>
-                        <p class="card-text"> @contact.Course_of_study</p>
-                        <a href="Student/ViewStudent/@contact.Id" class="card-link btn btn-info">View</a>
-                        <a href="Student/Edit/@contact.Id" class="card-link btn btn-primary"><img src="/assets/Edit.png" alt="Edit" /></a>
-                        <button type="button" class="btn card-link btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="/assets/Delete.svg" alt="Delete" />
-                        </button>
-                    </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Contact</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                   Are You Sure You Want to Delete This Permanently?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                    <a href="Student/Delete/@contact.Id" class="card-link btn btn-danger">Yes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
+        <div class="row d-flex gap-1">
+            <a href="Student" class="card text-bg-secondary mb-3 col-12 col-sm-6 col-md-3">
+                <div class="card-header hometab" >
+                    <img src="./assets/Person.svg" alt="person" />
                 </div>
-            }
+                <div class="card-body">
+                    <h5 class="card-title">Students</h5>
+                </div>
+            </a>
+
+            <a href="Course/ViewCourses" class="card text-bg-secondary mb-3 col-12 col-sm-6 col-md-3">
+                <div class="card-header hometab">
+                    <img src="./assets/Courses.svg" alt="person" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Courses</h5>
+                </div>
+            </a>
+
+            <a href="Score" class="card text-bg-secondary mb-3 col-12 col-md-6 col-lg-3">
+                <div class="card-header hometab">
+                    <img src="./assets/Scores.svg" alt="person" />
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">Scores</h5>
+                </div>
+            </a>
+
         </div>
     </div>
 

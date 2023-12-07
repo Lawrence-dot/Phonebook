@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "HTZVUq5KpSL9epFTVXjSGyxRxhV3wwK2qdkx8h7JYoI=",
+  "Hash": "WXzedG4Mk3VUlxVeejyvK2bZYiGpcPpPY/po7jbY2n8=",
   "Source": "Phonebook",
   "BasePath": "_content/Phonebook",
   "Mode": "Default",
@@ -49,6 +49,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\obj\\Debug\\net6.0\\scopedcss\\projectbundle\\Phonebook.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Courses.svg",
+      "SourceId": "Phonebook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\",
+      "BasePath": "_content/Phonebook",
+      "RelativePath": "assets/Courses.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Courses.svg"
     },
     {
       "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Delete.svg",
@@ -100,6 +117,40 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\logo.png"
+    },
+    {
+      "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Person.svg",
+      "SourceId": "Phonebook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\",
+      "BasePath": "_content/Phonebook",
+      "RelativePath": "assets/Person.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Person.svg"
+    },
+    {
+      "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Scores.svg",
+      "SourceId": "Phonebook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\",
+      "BasePath": "_content/Phonebook",
+      "RelativePath": "assets/Scores.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\assets\\Scores.svg"
     },
     {
       "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\search.svg",

@@ -1,9 +1,10 @@
-﻿const validate = () => {
+﻿var id = (id) => document.getElementById(id);
+
+
+const validate = () => {
     document.querySelectorAll('small').forEach((each) => {
         each.classList.add("hidden");
     });
-
-    let id = (id) => document.getElementById(id);
 
     const validatestring = HTMLInputElement => {
         let element = HTMLInputElement.value;
@@ -17,7 +18,7 @@
 
     const validatedob = HTMLInputElement => {
         let element = HTMLInputElement.value;
-        if (element.value > Date.parse("2006-12-25") && element.value <= new Date() && element.value != null && element.v) {
+        if (new Date(element) < Date.parse("2006-12-25") && new Date(element) <= new Date() && element != null) {
             return true;
         } else {
             HTMLInputElement.nextElementSibling.classList.remove("hidden");
@@ -26,21 +27,25 @@
     }
 
     const validatemail = HTMLInputElement =>
-
     {
         let mail = HTMLInputElement.value;
-            if (mail.Length > 0 && mail != null && mail.Contains(".com")) {
-                return true;
+        console.log(HTMLInputElement);
+
+        if (mail.length > 0 && mail != null && mail.includes("@")) {
+            console.log("validated");
+            return true;
+
             }
             else {
-                HTMLInputElement.nextElementSibling.classList.remove("hidden");
-                return false;
+            HTMLInputElement.nextElementSibling.classList.remove("hidden");
+            console.log("unvalidated");
+            return false;
             }
-        }
+    }
 
     const validateadmdate = HTMLInputElement => {
         let element = HTMLInputElement.value;
-        if (element.value <= new Date() && element.value != null) {
+        if (new Date(element) <= new Date() && new Date(element) != null) {
             return true;
         } else {
             HTMLInputElement.nextElementSibling.classList.remove("hidden");
@@ -81,7 +86,7 @@
     validateadmdate(id("Admission_date"));
     validatedob(id("Date_of_birth"));
 
-    if (validatestring(id("fname")) && validatestring(id("mname")) && validatestring(id("Admission_number")) && validateadmdate("Admission_date") && validatedob("Date_of_birth") && validatestring(id("lname")) && validatePhone(id("phone")) && validatestring(id("Admission_number")) && validatestring(id("Home_address")) && validatestring(id("Gender")) && validatemail(id("Email")) && validatestring(id("Course_of_study"))) {
+    if (validatestring(id("fname")) && validatestring(id("Faculty")) && validatestring(id("mname")) && validatestring(id("Admission_number")) && validateadmdate(id("Admission_date")) && validatedob(id("Date_of_birth")) && validatestring(id("lname")) && validatePhone(id("phone")) && validatestring(id("Admission_number")) && validatestring(id("Home_address")) && validatestring(id("Gender")) && validatemail(id("Email")) && validatestring(id("Course_of_study"))) {
         console.log("validated");
         return true;
     } else {
@@ -98,7 +103,6 @@ const validatecourse = () => {
         each.classList.add("hidden");
     });
 
-    let id = (id) => document.getElementById(id);
 
     const validatestring = HTMLInputElement => {
         let element = HTMLInputElement.value;
@@ -127,6 +131,60 @@ const validatecourse = () => {
     if (validatestring(id("Title")) && validatestring(id("Code")) && validatestring(id("Unit"))) {
         return true;
     } else {
+        return false;
+    }
+}
+
+const validatescore = () => {
+    document.querySelectorAll('small').forEach((each) => {
+        each.classList.add("hidden");
+    });
+
+    const validatestring = HTMLInputElement => {
+        let element = HTMLInputElement.value;
+        if (element != null && element.length > 0) {
+            console.log(element);
+            return true;
+        } else {
+            HTMLInputElement.nextElementSibling.classList.remove("hidden");
+            return false;
+        };
+    }
+
+    const validateCA = HTMLInputElement => {
+        let element = HTMLInputElement.value;
+        if (element != null && element.length > 0 && element <= 10 && element > 0) {
+            return true;
+        } else {
+            HTMLInputElement.nextElementSibling.classList.remove("hidden");
+            return false;
+        };
+    }
+
+    const validateExam = HTMLInputElement => {
+        let element = HTMLInputElement.value;
+        if (element != null && element.length > 0 && element <= 70  && element > 0) {
+            return true;
+        } else {
+            HTMLInputElement.nextElementSibling.classList.remove("hidden");
+            return false;
+        };
+    }
+
+    validatestring(id("Matric_number"));
+    validateCA(id("CA_1"));
+    validateCA(id("CA_2"));
+    validateCA(id("CA_3"));
+    validateExam(id("Exam_score"));
+    validatestring(id("Year"));
+    validatestring(id("Semester"));
+    validatestring(id("Level"));
+
+    if (validatestring(id("Matric_number")) && validateCA(id("CA_1")) && validateCA(id("CA_2")) && validatestring(id("Year")) && validatestring(id("CA_3")) && validateExam(id("Exam_score")) && validatestring(id("Semester")) && validatestring(id("Level"))) {
+        console.log("Validated");
+        return true;
+    } else {
+        console.log("Not validated")
         return false;
     }
 }

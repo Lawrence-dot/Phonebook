@@ -11,10 +11,20 @@ namespace Phonebook.Controllers
 
         private readonly StudentDbContext students;
 
+        public StudentErrorViewModel studentdata = new StudentErrorViewModel(); 
+
+        public async Task<IActionResult> Index()
+        {
+            var stud = await students.Students.ToListAsync();
+            return View(stud);
+        }
+
         public StudentController(StudentDbContext Students)
         {
             students = Students;
         }
+
+
 
         public bool verifystring(string value)
         {
@@ -26,6 +36,76 @@ namespace Phonebook.Controllers
             {
                 return false;
             }
+        }
+
+        public string verifyinput(string value, string field)
+        {
+            if (value != null)
+            {
+                return $"The {field} is required";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string verifyinput(int value, string field)
+        {
+            if (value > 0)
+            {
+                return $"The {field} is required";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public string verifyinput(DateTime value, string field)
+        {
+            if (value <= DateTime.Now)
+            {
+                return $"The {field} is required";
+            }
+            else
+            {
+                return "";
+            }
+        }
+
+        public void VerifyStudentFields(AddStudentViewModel data)
+        {
+            verifyinput(data.First_name, "First Name");
+            verifyinput(data.Middle_name, "Middle Name");
+            verifyinput(data.Last_name, "Last Name");
+            verifyinput(data.Admission_date, "Admission Date");
+            verifyinput(data.Email, "Email");
+            verifyinput(data.Department, "Department");
+            verifyinput(data.Level, "Level");
+            verifyinput(data.Admission_number, "Admission Number");
+            verifyinput(data.Home_address, "Home Address");
+            verifyinput(data.Course_of_study, "Course Of Study");
+            verifyinput(data.Date_of_birth, "Date of Birth");
+            verifyinput(data.Faculty, "Faculty");
+            verifyinput(data.Phone_number, "Phone Number");
+        }
+
+        public void VerifyStudentFields(EditStudentViewModel data)
+        {
+            verifyinput(data.First_name, "First Name");
+            verifyinput(data.Middle_name, "Middle Name");
+            verifyinput(data.Last_name, "Last Name");
+            verifyinput(data.Admission_date, "Admission Date");
+            verifyinput(data.Email, "Email");
+            verifyinput(data.Department, "Department");
+            verifyinput(data.Level, "Level");
+            verifyinput(data.Admission_number, "Admission Number");
+            verifyinput(data.Home_address, "Home Address");
+            verifyinput(data.Course_of_study, "Course Of Study");
+            verifyinput(data.Date_of_birth, "Date of Birth");
+            verifyinput(data.Faculty, "Faculty");
+            verifyinput(data.Phone_number, "Phone Number");
         }
 
         public bool Verifymail(string mail)
@@ -82,6 +162,7 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> Add(AddStudentViewModel student)
         {
+            VerifyStudentFields(student);
             if (verifystring(student.First_name) && verifyDob(student.Date_of_birth) && verifyadmdate(student.Admission_date) && verifystring(student.Middle_name) && verifystring(student.Last_name) && verifyphone(student.Phone_number) && verifystring(student.Admission_number) && verifystring(student.Home_address) && verifystring(student.Department) && verifystring(student.Faculty) && verifystring(student.Level.ToString()) && verifystring(student.Gender) && Verifymail(student.Email) && verifystring(student.Course_of_study))
                 {
                     var data = new Student()
@@ -104,13 +185,20 @@ namespace Phonebook.Controllers
                 };
                 await students.Students.AddAsync(data);
                 await students.SaveChangesAsync();
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Student");
             }
             else
             {
-                return new EmptyResult();
+               return RedirectToAction("Error", "Student");
             }
         }
+
+        public IActionResult Error()
+        {
+            return View(studentdata);
+        }
+
+
 
         public async Task<IActionResult> ViewStudent(Guid id)
         {
@@ -128,8 +216,7 @@ namespace Phonebook.Controllers
 
         public IActionResult AddStudent()
         {
-                return View();
-
+             return View();
         }
 
         public async Task<IActionResult> Delete(Guid id)
@@ -140,7 +227,7 @@ namespace Phonebook.Controllers
                 students.Students.Remove(data);
                 await students.SaveChangesAsync();
             }
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Index", "Student");
 
         }
 
@@ -178,11 +265,12 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> EditStudent(EditStudentViewModel student)
         {
-            Console.WriteLine(student.Date_of_birth);
-            if (verifystring(student.First_name))
+            VerifyStudentFields(student);
+            Console.WriteLine(student.Id);
+            Console.WriteLine(Request.Form["id"]);
+            if (verifystring(student.First_name) && verifyDob(student.Date_of_birth) && verifyadmdate(student.Admission_date) && verifystring(student.Middle_name) && verifystring(student.Last_name) && verifyphone(student.Phone_number) && verifystring(student.Admission_number) && verifystring(student.Home_address) && verifystring(student.Department) && verifystring(student.Faculty) && verifystring(student.Level.ToString()) && verifystring(student.Gender) && Verifymail(student.Email) && verifystring(student.Course_of_study))
             {
                 var data = await students.Students.FindAsync(student.Id);
-                Console.WriteLine(student.Id);
                 if (data != null)
                 {
                     data.First_name = student.First_name;
@@ -199,15 +287,14 @@ namespace Phonebook.Controllers
                     data.Admission_date = student.Admission_date;
                     data.Home_address = student.Home_address;
                     data.Phone_number = student.Phone_number;
-                    Console.WriteLine("db");
                     await students.SaveChangesAsync();
                 }
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Student");
             }
             else
             {
-                return new EmptyResult();
+                return RedirectToAction("Error", "Student");
             }
         }
 

@@ -5,12 +5,24 @@
       "PackagePath": "staticwebassets\\Phonebook.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Courses.svg",
+      "PackagePath": "staticwebassets\\assets\\Courses.svg"
+    },
+    {
       "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Delete.svg",
       "PackagePath": "staticwebassets\\assets\\Delete.svg"
     },
     {
       "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Edit.png",
       "PackagePath": "staticwebassets\\assets\\Edit.png"
+    },
+    {
+      "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Person.svg",
+      "PackagePath": "staticwebassets\\assets\\Person.svg"
+    },
+    {
+      "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Scores.svg",
+      "PackagePath": "staticwebassets\\assets\\Scores.svg"
     },
     {
       "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\logo.png",
