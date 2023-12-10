@@ -5,7 +5,7 @@ namespace Phonebook.Models
     public class Score
     {
         public Guid Id { get; set; }
-        public int Course_id { get; set; }
+        public Guid Course_id { get; set; }
         public string Matric_number { get; set; }
         public Decimal CA_1 { get; set; }
         public Decimal CA_2 { get; set; }

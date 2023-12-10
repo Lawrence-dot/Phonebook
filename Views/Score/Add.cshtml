@@ -7,8 +7,10 @@
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
         <div class="col-12 d-flex flex-column">
-        <label for="Matric_number" class="form-label">Course Id</label>
-        <input type="number" min="0" onfocusin="clermsg(event)" asp-for="Course_id" class="form-control" id="Course_id" aria-describedby="inputGroupPrepend">
+        <label for="Matric_number" class="form-label">Course</label>
+        <select onfocusin="clermsg(event)" asp-for="Course" class="form-control" id="Level">
+            <option value="jm"> jm </option>
+        </select>
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
     <div class="mb-3 d-flex flex-column">

@@ -16,9 +16,9 @@ namespace Phonebook.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Code = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Unit = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Title = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Code = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Unit = table.Column<string>(type: "nvarchar(200)", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -30,14 +30,14 @@ namespace Phonebook.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Course_id = table.Column<int>(type: "int", nullable: false),
-                    Matric_number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Course_id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Matric_number = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     CA_1 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CA_2 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     CA_3 = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Exam_score = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
                     Year = table.Column<int>(type: "int", nullable: false),
-                    Semester = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Semester = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -50,20 +50,20 @@ namespace Phonebook.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    First_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Middle_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Last_name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    First_name = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Middle_name = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Last_name = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Date_of_birth = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Admission_number = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Admission_number = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Admission_date = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    Home_address = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Department = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Faculty = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Home_address = table.Column<string>(type: "nvarchar(500)", nullable: false),
+                    Department = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Faculty = table.Column<string>(type: "nvarchar(200)", nullable: false),
                     Level = table.Column<int>(type: "int", nullable: false),
-                    Course_of_study = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Gender = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Phone_number = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Course_of_study = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Phone_number = table.Column<string>(type: "nvarchar(200)", nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(500)", nullable: false)
                 },
                 constraints: table =>
                 {

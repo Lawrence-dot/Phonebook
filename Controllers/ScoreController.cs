@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
 using Phonebook.Models;
+using System.Linq;
 
 namespace Phonebook.Controllers
 {
@@ -187,21 +188,26 @@ namespace Phonebook.Controllers
             VerifyScoreFields(newscore);
             if (validateCA(newscore.CA_1) && validateCA(newscore.CA_2) && validateCA(newscore.CA_3) && validateExam(newscore.Exam_score) && validatedata(newscore.Semester) && validatedata(newscore.Year) && validatedata(newscore.Level))
             {
-                var score = new Score()
+                var courser = await scores.Courses.FirstOrDefaultAsync(a => a.Code == newscore.Course);
+                if (courser is Course)
                 {
-                    Id = Guid.NewGuid(),
-                    Course_id = newscore.Course_id,
-                    CA_1 = newscore.CA_1,
-                    CA_2 = newscore.CA_2,
-                    CA_3 = newscore.CA_3,
-                    Exam_score = newscore.Exam_score,
-                    Level = newscore.Level,
-                    Matric_number = newscore.Matric_number,
-                    Semester = newscore.Semester,
-                    Year = newscore.Year,
-                };
-                await scores.Scores.AddAsync(score);
-                await scores.SaveChangesAsync();
+                    var score = new Score()
+                    {
+                        Id = Guid.NewGuid(),
+                        Course_id = courser.Id,
+                        CA_1 = newscore.CA_1,
+                        CA_2 = newscore.CA_2,
+                        CA_3 = newscore.CA_3,
+                        Exam_score = newscore.Exam_score,
+                        Level = newscore.Level,
+                        Matric_number = newscore.Matric_number,
+                        Semester = newscore.Semester,
+                        Year = newscore.Year,
+                    };
+                    await scores.Scores.AddAsync(score);
+                    await scores.SaveChangesAsync();
+                }
+
                 return RedirectToAction("Index", "Score");
             } else
             {

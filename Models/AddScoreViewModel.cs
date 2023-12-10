@@ -3,7 +3,7 @@
     public class AddScoreViewModel
     {
         public string Matric_number { get; set; }
-        public int Course_id { get; set; }
+        public string Course { get; set; }
         public int CA_1 { get; set; }
         public int CA_2 { get; set; }
         public int CA_3 { get; set; }
