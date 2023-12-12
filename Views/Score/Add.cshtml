@@ -9,7 +9,10 @@
         <div class="col-12 d-flex flex-column">
         <label for="Matric_number" class="form-label">Course</label>
         <select onfocusin="clermsg(event)" asp-for="Course" class="form-control" id="Level">
-            <option value="jm"> jm </option>
+            @foreach (var course in ViewBag.coursedata)
+            {
+                <option> @course.Code </option>
+            }
         </select>
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
     </div>
@@ -36,7 +39,7 @@
     <div class="mb-3 d-flex flex-column">
         <label for="Year" class="form-label">Year </label>
         <input type="number" min="1990" max=@DateTime.Now.Year.ToString() onfocusin="clermsg(event)" asp-for="Year" class="form-control" id="Year">
-        <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <small class="hidden warnings"> Please Fill Input a valid Year </small>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="Semester" class="form-label">Semester </label>

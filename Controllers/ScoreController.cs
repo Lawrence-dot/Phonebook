@@ -18,14 +18,15 @@ namespace Phonebook.Controllers
             return View(allscores);
         }
 
-        public IActionResult Add()
+        public async Task<IActionResult> Add()
         {
+            var courses = await scores.Courses.ToListAsync();
+            ViewBag.coursedata = courses;  
             return View();
         }
 
         public async Task<IActionResult> Edit(Guid id)
         {
-            Console.WriteLine(id.GetType());
             var data = await scores.Scores.FindAsync(id);
             if (data != null)
             {
