@@ -26,44 +26,6 @@ namespace Phonebook.Controllers
             return View();
         }
 
-        public string verifyinput(string value, string field)
-        {
-            if (value != null)
-            {
-                return $"The {field} is required";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public void VerifyCourseFields(AddCourseViewModel data)
-        {
-            verifyinput(data.Code, "Code");
-            verifyinput(data.Unit, "Unit");
-            verifyinput(data.Title, "Title");
-        }
-
-        public void VerifyCourseFields(EditCourseViewModel data)
-        {
-            verifyinput(data.Code, "Code");
-            verifyinput(data.Unit, "Unit");
-            verifyinput(data.Title, "Title");
-        }
-
-        public bool validatedata(string value)
-        {
-            if (value != null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
         public async Task<IActionResult> ViewCourses()
         {
             var courseview = await courses.Courses.ToListAsync();
@@ -84,24 +46,23 @@ namespace Phonebook.Controllers
 
         }
 
-        public async Task<IActionResult> AddNewCourses(AddCourseViewModel student)
+        public async Task<IActionResult> AddNewCourses(AddCourseViewModel course)
         {
-            VerifyCourseFields(student);
-            if (validatedata(student.Code) && validatedata(student.Title) && validatedata(student.Unit))
+            if (ModelState.IsValid)
             {
                 var data = new Course()
                 {
                     Id = new Guid(),
-                    Title = student.Title,
-                    Code = student.Code,
-                    Unit = student.Unit,
+                    Title = course.Title,
+                    Code = course.Code,
+                    Unit = course.Unit,
                 };
                 await courses.Courses.AddAsync(data);
                 await courses.SaveChangesAsync();
                 return RedirectToAction("ViewCourses", "Course");
             } else
             {
-                return RedirectToAction("Error", "Course");
+                return View("~/Views/Course/AddCourses.cshtml", course);
             }
 
 
@@ -146,8 +107,8 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> EditCourse(EditCourseViewModel editcourse)
         {
-            VerifyCourseFields(editcourse);
-            if (validatedata(editcourse.Code) && validatedata(editcourse.Title) && validatedata(editcourse.Unit))
+           
+            if (ModelState.IsValid)
             {
                 var data = await courses.Courses.FindAsync(editcourse.Id);
                 if (data != null)
@@ -161,11 +122,9 @@ namespace Phonebook.Controllers
             }
             else
             {
-                return RedirectToAction("Error", "Coursee");
+                return View("~/Views/Student/AddStudent.cshtml", editcourse);
             }
+            
         }
-
-
-
     }
 }

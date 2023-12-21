@@ -1,10 +1,11 @@
-﻿@model Phonebook.Models.AddScoreViewModel
+﻿@model AddScoreViewModel
 
 <form method="post" class="form" asp-controller="Score" asp-action="AddScore" onsubmit="return validatescore()">
     <div class="col-12 d-flex flex-column">
         <label for="Matric_number" class="form-label">Matric Number</label>
         <input type="text" onfocusin="clermsg(event)" asp-for="Matric_number" class="form-control" id="Matric_number" aria-describedby="inputGroupPrepend">
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Matric_number" class="text-danger"></span>
     </div>
         <div class="col-12 d-flex flex-column">
         <label for="Matric_number" class="form-label">Course</label>
@@ -15,31 +16,38 @@
             }
         </select>
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Course" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="CA_1" class="form-label">CA 1</label>
         <input type="number" min="0" onfocusin="clermsg(event)" asp-for="CA_1" class="form-control" id="CA_1" aria-describedby="emailHelp">
         <small class="hidden warnings"> Please Fill Input a valid score </small>
+        <span asp-validation-for="CA_1" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="CA_2" class="form-label">CA 2</label>
         <input type="number" min="0" onfocusin="clermsg(event)" asp-for="CA_2" class="form-control" id="CA_2" aria-describedby="emailHelp">
         <small class="hidden warnings"> Please Fill Input a valid score </small>
+        <span asp-validation-for="CA_2" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="CA_3" class="form-label">CA 3</label>
         <input type="number" min="0" onfocusin="clermsg(event)" asp-for="CA_3" class="form-control" id="CA_3" aria-describedby="emailHelp">
         <small class="hidden warnings"> Please Fill Input a valid Score </small>
+        <span asp-validation-for="CA_3" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="Exam_score" class="form-label">Exam Score </label>
         <input type="number" min="0" onfocusin="clermsg(event)" asp-for="Exam_score" class="form-control" id="Exam_score">
         <small class="hidden warnings"> Please Fill Input a valid Exam Score </small>
+        <span asp-validation-for="Exam_score" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="Year" class="form-label">Year </label>
         <input type="number" min="1990" max=@DateTime.Now.Year.ToString() onfocusin="clermsg(event)" asp-for="Year" class="form-control" id="Year">
         <small class="hidden warnings"> Please Fill Input a valid Year </small>
+        <span asp-validation-for="Year" class="text-danger"></span>
+        '
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="Semester" class="form-label">Semester </label>
@@ -48,6 +56,7 @@
             <option value="200"> Harmattan </option>
         </select>
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Semester" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="Semester" class="form-label">Level </label>
@@ -58,6 +67,7 @@
             <option value="400"> 400 </option>
         </select>
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Level" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-info w-100"> Save Score </button>

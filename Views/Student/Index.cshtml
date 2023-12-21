@@ -26,27 +26,9 @@
                         <p class="card-text"> @contact.Course_of_study</p>
                         <a href="Student/ViewStudent/@contact.Id" class="card-link btn btn-info">View</a>
                         <a href="/Student/Edit/@contact.Id" class="card-link btn btn-primary"><img src="/assets/Edit.png" alt="Edit" /></a>
-                        <button type="button" class="btn card-link btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                            <img src="/assets/Delete.svg" alt="Delete" />
-                        </button>
+                        <a href="/Student/Delete/@contact.Id" class="card-link btn btn-danger"> Delete</a>
                     </div>
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Delete Contact</h1>
-                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                   Are You Sure You Want to Delete This Permanently?
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
-                                    <a href="/Student/Delete/@contact.Id" class="card-link btn btn-danger">Yes</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
 
                 </div>
             }

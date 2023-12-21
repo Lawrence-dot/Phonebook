@@ -1,20 +1,23 @@
-﻿@model Phonebook.Models.AddCourseViewModel
+﻿@model AddCourseViewModel
 
 <form method="post" class="" asp-controller="Course" asp-action="AddNewCourses" onsubmit="return validatecourse()">
     <div class="col-12 d-flex flex-column">
         <label for="fname" class="form-label">Title </label>
         <input type="text" onfocusin="clermsg(event)" asp-for="Title" class="form-control" id="Title" aria-describedby="inputGroupPrepend">
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Title" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="lname" class="form-label">Course</label>
         <input type="text" onfocusin="clermsg(event)" asp-for="Code" class="form-control" id="Code" aria-describedby="emailHelp">
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Code" class="text-danger"></span>
     </div>
     <div class="mb-3 d-flex flex-column">
         <label for="pphone" class="form-label">Unit</label>
         <input type="number" min="0" max="10" onfocusin="clermsg(event)" asp-for="Unit" class="form-control" id="Unit" aria-describedby="emailHelp">
         <small class="hidden warnings"> Please Fill Input a valid Input </small>
+        <span asp-validation-for="Unit" class="text-danger"></span>
     </div>
 
     <button type="submit" class="btn btn-info w-100"> Save Student </button>

@@ -1,76 +1,79 @@
-﻿var id = (id) => document.getElementById(id);
+﻿const id = (id) => document.getElementById(id);
 
+const clermsg = (event) => {
+    event.target.nextElementSibling.classList.add("hidden");
+}
 
-const validate = () => {
+const hideerrors = () => {
     document.querySelectorAll('small').forEach((each) => {
         each.classList.add("hidden");
     });
+}
 
-    const validatestring = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (element.length > 0 && element != null) {
+const validatestring = HTMLInputElement => {
+    let element = HTMLInputElement.value;
+    if (element.length > 0 && element != null) {
+        return true;
+    } else {
+        HTMLInputElement.nextElementSibling.classList.remove("hidden");
+        return false;
+    };
+}
+
+const validatemail = HTMLInputElement => {
+    let mail = HTMLInputElement.value;
+    if (mail.length > 0 && mail != null && mail.includes("@")) {
+        return true;
+
+    }
+    else {
+        HTMLInputElement.nextElementSibling.classList.remove("hidden");
+        console.log("unvalidated");
+        return false;
+    }
+}
+
+const validatedob = HTMLInputElement => {
+    let element = HTMLInputElement.value;
+    if (new Date(element) < Date.parse("2006-12-25") && element != null) {
+        return true;
+    } else {
+        HTMLInputElement.nextElementSibling.classList.remove("hidden");
+        return false;
+    };
+}
+
+const validateadmdate = HTMLInputElement => {
+    let element = HTMLInputElement.value;
+    if (new Date(element) <= new Date() && new Date(element) != null) {
+        return true;
+    } else {
+        HTMLInputElement.nextElementSibling.classList.remove("hidden");
+        return false;
+    };
+}
+
+const validatePhone = HTMLInputElement => {
+    let element = HTMLInputElement.value;
+    if (element != null) {
+        if (element.startsWith("0") && element.length == 11) {
             return true;
-        } else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            return false;
-        };
-    }
-
-    const validatedob = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (new Date(element) < Date.parse("2006-12-25") && new Date(element) <= new Date() && element != null) {
+        } else if (element.startsWith("+") && element.length == 14) {
             return true;
-        } else {
+        }
+        else {
             HTMLInputElement.nextElementSibling.classList.remove("hidden");
             return false;
-        };
-    }
+        }
+    } else {
+        HTMLInputElement.nextElementSibling.classList.remove("hidden");
+        return false;
+    };
+}
 
-    const validatemail = HTMLInputElement =>
-    {
-        let mail = HTMLInputElement.value;
-        console.log(HTMLInputElement);
 
-        if (mail.length > 0 && mail != null && mail.includes("@")) {
-            console.log("validated");
-            return true;
-
-            }
-            else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            console.log("unvalidated");
-            return false;
-            }
-    }
-
-    const validateadmdate = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (new Date(element) <= new Date() && new Date(element) != null) {
-            return true;
-        } else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            return false;
-        };
-    }
-
-    const validatePhone = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (element != null) {
-            if (element.startsWith("0") && element.length == 11) {
-                return true;
-            } else if (element.startsWith("+") && element.length == 14) {
-                return true;
-            }
-            else {
-                HTMLInputElement.nextElementSibling.classList.remove("hidden");
-                return false;
-            }
-        } else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            return false;
-        };
-    }
-
+const validate = () => {
+    hideerrors();
     validatestring(id("fname"));
     validatestring(id("lname"));
     validatestring(id("mname"));
@@ -94,36 +97,10 @@ const validate = () => {
     }
 }
 
-const clermsg = (event) => {
-    event.target.nextElementSibling.classList.add("hidden");
-}
+
 
 const validatecourse = () => {
-    document.querySelectorAll('small').forEach((each) => {
-        each.classList.add("hidden");
-    });
-
-
-    const validatestring = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (element.length > 0 && element != null) {
-            return true;
-        } else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            return false;
-        };
-    }
-
-    const validatelevel = HTMLInputElement => {
-        let element = HTMLInputElement.value;
-        if (element.length > 0 && element != null && Number(elemnt) >= 100 ) {
-            return true;
-        } else {
-            HTMLInputElement.nextElementSibling.classList.remove("hidden");
-            return false;
-        };
-    }
-
+    hideerrors();
     validatestring(id("Title"));
     validatestring(id("Code"));
     validatestring(id("Unit"));
@@ -136,14 +113,10 @@ const validatecourse = () => {
 }
 
 const validatescore = () => {
-    document.querySelectorAll('small').forEach((each) => {
-        each.classList.add("hidden");
-    });
-
+    hideerrors();
     const validatestring = HTMLInputElement => {
         let element = HTMLInputElement.value;
         if (element != null && element.length > 0) {
-            console.log(element);
             return true;
         } else {
             HTMLInputElement.nextElementSibling.classList.remove("hidden");

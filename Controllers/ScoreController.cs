@@ -52,175 +52,38 @@ namespace Phonebook.Controllers
             
         }
 
-        public string verifyinput(string value, string field)
-        {
-            if (value != null)
-            {
-                return $"The {field} is required";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public string verifyinput(int value, string field)
-        {
-            if (value > 0)
-            {
-                return $"The {field} is required";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public string verifyinput(Decimal value, string field)
-        {
-            if (value > 0)
-            {
-                return $"The {field} is required";
-            }
-            else
-            {
-                return "";
-            }
-        }
-
-        public bool validateCA(int value)
-        {
-            if (value > 0 && value <= 10)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validateCA(Decimal value)
-        {
-            if (value > 0 && value <= 10)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validateExam(int value)
-        {
-            if(value > 0 && value <= 70)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validateExam(Decimal value)
-        {
-            if (value > 0 && value <= 70)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validatedata(int value)
-        {
-            if (value > 0 && value < 2006)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public bool validatedata(string value)
-        {
-            if (value != null )
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
-
-        public void VerifyScoreFields(AddScoreViewModel data)
-        {
-            verifyinput(data.CA_1, "CA 1");
-            verifyinput(data.CA_2, "CA 2");
-            verifyinput(data.CA_3, "CA 3");
-            verifyinput(data.Exam_score, "Exam Score");
-            verifyinput(data.Matric_number, "Matric Number");
-            verifyinput(data.Year, "Year");
-            verifyinput(data.Level, "Level");
-            verifyinput(data.Semester, "Semester");
-        }
-
-        public void VerifyScoreFields(Score data)
-        {
-            verifyinput(data.CA_1, "CA 1");
-            verifyinput(data.CA_2, "CA 2");
-            verifyinput(data.CA_3, "CA 3");
-            verifyinput(data.Exam_score, "Exam Score");
-            verifyinput(data.Matric_number, "Matric Number");
-            verifyinput(data.Year, "Year");
-            verifyinput(data.Level, "Level");
-            verifyinput(data.Semester, "Semester");
-        }
-
         public async Task<IActionResult> AddScore(AddScoreViewModel newscore)
         {
-            VerifyScoreFields(newscore);
-            if (validateCA(newscore.CA_1) && validateCA(newscore.CA_2) && validateCA(newscore.CA_3) && validateExam(newscore.Exam_score) && validatedata(newscore.Semester) && validatedata(newscore.Year) && validatedata(newscore.Level))
+            var courser = await scores.Courses.FirstOrDefaultAsync(a => a.Code == newscore.Course);
+            if (ModelState.IsValid && courser is Course)
             {
-                var courser = await scores.Courses.FirstOrDefaultAsync(a => a.Code == newscore.Course);
-                if (courser is Course)
+                var score = new Score()
                 {
-                    var score = new Score()
-                    {
-                        Id = Guid.NewGuid(),
-                        Course_id = courser.Id,
-                        CA_1 = newscore.CA_1,
-                        CA_2 = newscore.CA_2,
-                        CA_3 = newscore.CA_3,
-                        Exam_score = newscore.Exam_score,
-                        Level = newscore.Level,
-                        Matric_number = newscore.Matric_number,
-                        Semester = newscore.Semester,
-                        Year = newscore.Year,
-                    };
-                    await scores.Scores.AddAsync(score);
-                    await scores.SaveChangesAsync();
-                }
-
+                    Id = Guid.NewGuid(),
+                    Course_id = courser.Id,
+                    CA_1 = newscore.CA_1,
+                    CA_2 = newscore.CA_2,
+                    CA_3 = newscore.CA_3,
+                    Exam_score = newscore.Exam_score,
+                    Level = newscore.Level,
+                    Matric_number = newscore.Matric_number,
+                    Semester = newscore.Semester,
+                    Year = newscore.Year,
+                };
+                await scores.Scores.AddAsync(score);
+                await scores.SaveChangesAsync();
                 return RedirectToAction("Index", "Score");
-            } else
+            }
+            else
             {
-                return RedirectToAction("Error", "Score");
+                return View("~/Views/Score/Add.cshtml", newscore);
             }
         }
 
         public async Task<IActionResult> EditScore(Score newscore)
         {
-            VerifyScoreFields(newscore);
             var data = await scores.Scores.FindAsync(newscore.Id);
-            if (validateCA(newscore.CA_1) && validateCA(newscore.CA_2) && validateCA(newscore.CA_3) && validateExam(newscore.Exam_score) && validatedata(newscore.Semester) && validatedata(newscore.Year) && validatedata(newscore.Level))
+            if (ModelState.IsValid)
             {
                 if (data != null)
                 {
@@ -239,7 +102,7 @@ namespace Phonebook.Controllers
             }
             else
             {
-                return RedirectToAction("Error", "Score");
+                return View("~/Views/Score/Edit.cshtml", newscore);
             }
         }
 
