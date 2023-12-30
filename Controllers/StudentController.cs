@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
 using Phonebook.Models;
+using Phonebook.Services.Interfaces;
 
 namespace Phonebook.Controllers
 {
@@ -10,51 +11,35 @@ namespace Phonebook.Controllers
 
         private readonly StudentDbContext students;
 
+        private readonly IStudent _studentService;
+
         public StudentErrorViewModel studentdata = new StudentErrorViewModel();
 
-        public StudentController(StudentDbContext Students)
+        public StudentController(StudentDbContext Students, IStudent studentService)
         {
             students = Students;
+            _studentService = studentService;
         }
 
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
-            var stud = await students.Students.ToListAsync();
-            return View(stud);
+           // var stud = await students.Students.ToListAsync();
+           var students = _studentService.Query();
+            return View(students.ToList());
         }
 
         public async Task<IActionResult> Add(AddStudentViewModel student)
         {
+           
             if (ModelState.IsValid)
             {
-                var data = new Student()
+                var addNew = await _studentService.AddNew(student);
+                if (addNew)
                 {
-                    Id = new Guid(),
-                    First_name = student.First_name,
-                    Last_name = student.Last_name,
-                    Middle_name = student.Middle_name,
-                    Course_of_study = student.Course_of_study,
-                    Email = student.Email,
-                    Level = student.Level,
-                    Gender = student.Gender,
-                    Admission_date = (DateTime)student.Admission_date,
-                    Admission_number = student.Admission_number,
-                    Date_of_birth = (DateTime)student.Date_of_birth,
-                    Department = student.Department,
-                    Faculty = student.Faculty,
-                    Home_address = student.Home_address,
-                    Phone_number = student.Phone_number
-                };
-                await students.Students.AddAsync(data);
-                await students.SaveChangesAsync();
-                return RedirectToAction("Index", "Student");
+                    return RedirectToAction("Index", "Student");
+                }
             }
-            else
-            {
-                return View("~/Views/Student/AddStudent.cshtml", student);
-            }
-
-            
+            return View("~/Views/Student/AddStudent.cshtml", student);
         }
 
         public IActionResult Error()
@@ -83,12 +68,7 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> Delete(Guid id)
         {
-            var data = await students.Students.FindAsync(id);
-            if (data != null)
-            {
-                students.Students.Remove(data);
-                await students.SaveChangesAsync();
-            }
+            await _studentService.Delete(id);
             return RedirectToAction("Index", "Student");
         }
 
@@ -126,29 +106,9 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> EditStudent(EditStudentViewModel student)
         {
-            var defu = ModelState;
             if (ModelState.IsValid)
-            {
-                
-                var data = await students.Students.FindAsync(student.Id);
-                if (data != null)
-                {
-                    data.First_name = student.First_name;
-                    data.Last_name = student.Last_name;
-                    data.Middle_name = student.Middle_name;
-                    data.Course_of_study = student.Course_of_study;
-                    data.Email = student.Email;
-                    data.Level = student.Level;
-                    data.Gender = student.Gender;
-                    data.Date_of_birth = (DateTime)student.Date_of_birth;
-                    data.Admission_number = student.Admission_number;
-                    data.Department = student.Department;
-                    data.Faculty = student.Faculty;
-                    data.Admission_date = (DateTime)student.Admission_date;
-                    data.Home_address = student.Home_address;
-                    data.Phone_number = student.Phone_number;
-                    await students.SaveChangesAsync();   
-                }
+            {   
+                await _studentService.Update(student);
                 return RedirectToAction("Index", "Student");
             }
             else

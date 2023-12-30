@@ -16,6 +16,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\OJERINDE HAPPINESS\Desktop\Phonebook
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/wwwroot/Components/Modal.razor]
+build_metadata.AdditionalFiles.TargetPath = d3d3cm9vdFxDb21wb25lbnRzXE1vZGFsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/OJERINDE HAPPINESS/Desktop/Phonebook/Views/Course/AddCourses.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ291cnNlXEFkZENvdXJzZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "WXzedG4Mk3VUlxVeejyvK2bZYiGpcPpPY/po7jbY2n8=",
+  "Hash": "arB9iUuVEZZuzKEkIGCL13jEf5/K1AL5XaJZDgkIVMQ=",
   "Source": "Phonebook",
   "BasePath": "_content/Phonebook",
   "Mode": "Default",
@@ -168,6 +168,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\assets\\search.svg"
+    },
+    {
+      "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\Components\\Modal.razor",
+      "SourceId": "Phonebook",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\",
+      "BasePath": "_content/Phonebook",
+      "RelativePath": "Components/Modal.razor",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Components\\Modal.razor"
     },
     {
       "Identity": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\css\\site.css",

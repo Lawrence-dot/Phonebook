@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\Phonebook.bundle.scp.css"
     },
     {
+      "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\Components\\Modal.razor",
+      "PackagePath": "staticwebassets\\Components\\Modal.razor"
+    },
+    {
       "Id": "C:\\Users\\OJERINDE HAPPINESS\\Desktop\\Phonebook\\wwwroot\\assets\\Courses.svg",
       "PackagePath": "staticwebassets\\assets\\Courses.svg"
     },

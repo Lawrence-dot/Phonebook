@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
+using Phonebook.Services.Implementation;
+using Phonebook.Services.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,6 +12,11 @@ builder.Services.AddControllersWithViews();
 */
 builder.Services.AddDbContext<StudentDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
+builder.Services.AddScoped<IStudent, StudentService>();
+
+builder.Services.AddScoped<ICourse, CourseService>();
+
+builder.Services.AddScoped<IScore, ScoreService>();
 
 var app = builder.Build();
 

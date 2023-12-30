@@ -2,6 +2,8 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
 using Phonebook.Models;
+using Phonebook.Services.Implementation;
+using Phonebook.Services.Interfaces;
 
 namespace Phonebook.Controllers
 {
@@ -9,11 +11,14 @@ namespace Phonebook.Controllers
     {
         private readonly StudentDbContext courses;
 
+        private readonly ICourse _courseService;
+
         public CourseErrorModel coursedata = new CourseErrorModel();
 
-        public CourseController(StudentDbContext Courses)
+        public CourseController(StudentDbContext Courses, ICourse courseService)
         {
             courses = Courses;
+            _courseService = courseService;
         }
 
         public IActionResult Index()
@@ -28,7 +33,7 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> ViewCourses()
         {
-            var courseview = await courses.Courses.ToListAsync();
+            var courseview = _courseService.Query().ToList();
             foreach (var course in courseview)
             {
                 course.Unit = course.Unit.ToString();
@@ -50,15 +55,7 @@ namespace Phonebook.Controllers
         {
             if (ModelState.IsValid)
             {
-                var data = new Course()
-                {
-                    Id = new Guid(),
-                    Title = course.Title,
-                    Code = course.Code,
-                    Unit = course.Unit,
-                };
-                await courses.Courses.AddAsync(data);
-                await courses.SaveChangesAsync();
+                await _courseService.AddNew(course);
                 return RedirectToAction("ViewCourses", "Course");
             } else
             {
@@ -70,12 +67,7 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> Delete(Guid id)
         {
-            var data = await courses.Courses.FindAsync(id);
-            if (data != null)
-            {
-                courses.Courses.Remove(data);
-                await courses.SaveChangesAsync();
-            }
+            await _courseService.Delete(id);    
             return RedirectToAction( "ViewCourses", "Course");
         }
 
@@ -110,14 +102,7 @@ namespace Phonebook.Controllers
            
             if (ModelState.IsValid)
             {
-                var data = await courses.Courses.FindAsync(editcourse.Id);
-                if (data != null)
-                {
-                    data.Title = editcourse.Title;
-                    data.Code = editcourse.Code;
-                    data.Unit = editcourse.Unit;
-                    await courses.SaveChangesAsync();
-                }
+                await _courseService.Update(editcourse);
                 return RedirectToAction("ViewCourses", "Course");
             }
             else

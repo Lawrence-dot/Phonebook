@@ -1,17 +1,7 @@
 ﻿@model AddStudentViewModel
-@* @Html.ValidationSummary(false, "", new {@class = "text-danger hidden warnings"}) *@
-@if(TempData["message"] != null)
-{
-    <ul>
-    @foreach (var item in (string[])(TempData["message"]))
-    {
-        <li class="warnings text-danger"> @item </li>
-    }
-    </ul>
-}
 
 
-<form method="post" class="form" asp-controller="Student" asp-action="Add" onsubmit="return validate()">
+<form method="post" class="form" asp-controller="Student" asp-action="Add">
     <div class="col-12 d-flex flex-column">
         <label for="fname" class="form-label">First Name</label> 
         <input type="text"  onfocusin="clermsg(event)" asp-for="First_name" class="form-control" id="fname" aria-describedby="inputGroupPrepend" >
@@ -118,3 +108,7 @@
 
     <button type="submit" class="btn btn-info w-100"> Save Student </button>
 </form>
+
+
+
+

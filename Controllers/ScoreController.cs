@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Phonebook.Data;
 using Phonebook.Models;
+using Phonebook.Services.Interfaces;
 using System.Linq;
 
 namespace Phonebook.Controllers
@@ -10,11 +11,19 @@ namespace Phonebook.Controllers
     {
         private readonly StudentDbContext scores;
 
+        private readonly IScore _scoreService;
+
         public ScoreErrorViewModel scoredata = new ScoreErrorViewModel();
+
+        public ScoreController(StudentDbContext Scores, IScore scoreService)
+        {
+            scores = Scores;
+            _scoreService = scoreService;
+        }
 
         public async Task<IActionResult> Index()
         {
-            var allscores = await scores.Scores.ToListAsync();
+            var allscores = await _scoreService.Query().ToListAsync();
             return View(allscores);
         }
 
@@ -38,40 +47,15 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> Delete(Guid id)
         {
-            var data = await scores.Scores.FindAsync(id);
-            if (data != null)
-            {
-                scores.Scores.Remove(data);
-                await scores.SaveChangesAsync();
-                return RedirectToAction("Index", "Score");
-            } else
-            {
-                return RedirectToAction("Index", "Score");
-            }
-            
-            
+            await _scoreService.Delete(id);
+            return RedirectToAction("Index", "Score");
         }
 
         public async Task<IActionResult> AddScore(AddScoreViewModel newscore)
         {
-            var courser = await scores.Courses.FirstOrDefaultAsync(a => a.Code == newscore.Course);
-            if (ModelState.IsValid && courser is Course)
+            if (ModelState.IsValid)
             {
-                var score = new Score()
-                {
-                    Id = Guid.NewGuid(),
-                    Course_id = courser.Id,
-                    CA_1 = newscore.CA_1,
-                    CA_2 = newscore.CA_2,
-                    CA_3 = newscore.CA_3,
-                    Exam_score = newscore.Exam_score,
-                    Level = newscore.Level,
-                    Matric_number = newscore.Matric_number,
-                    Semester = newscore.Semester,
-                    Year = newscore.Year,
-                };
-                await scores.Scores.AddAsync(score);
-                await scores.SaveChangesAsync();
+                await _scoreService.AddNew(newscore);
                 return RedirectToAction("Index", "Score");
             }
             else
@@ -82,22 +66,9 @@ namespace Phonebook.Controllers
 
         public async Task<IActionResult> EditScore(Score newscore)
         {
-            var data = await scores.Scores.FindAsync(newscore.Id);
             if (ModelState.IsValid)
             {
-                if (data != null)
-                {
-                    data.Id = newscore.Id;
-                    data.CA_1 = newscore.CA_1;
-                    data.CA_2 = newscore.CA_2;
-                    data.CA_3 = newscore.CA_3;
-                    data.Exam_score = newscore.Exam_score;
-                    data.Level = newscore.Level;
-                    data.Matric_number = newscore.Matric_number;
-                    data.Semester = newscore.Semester;
-                    data.Year = newscore.Year;
-                };
-                await scores.SaveChangesAsync();
+                await _scoreService.Update(newscore);
                 return RedirectToAction("Index", "Score");
             }
             else
@@ -112,9 +83,6 @@ namespace Phonebook.Controllers
         }
 
 
-        public ScoreController(StudentDbContext Scores)
-        {
-            scores = Scores;
-        }
+        
     }
 }
